@@ -164,7 +164,7 @@ if __name__ == "__main__":
     _, tweet_list = read_json(r"C:\Users\dell\Desktop\Twitter-data-Analysis\data\Economic_Twitter_Data.json")
     tweet = TweetDfExtractor(tweet_list)
     tweet_df = tweet.get_tweet_df() 
-    print(twwet_df.head())
+    print(tweet_df.head())
     # use all defined functions to generate a dataframe with the specified columns above
 
     
