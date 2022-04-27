@@ -27,10 +27,9 @@ class Clean_Tweets:
         """
         #code to drop duplicates with the same entry on all columns
                
-        for i in len(df. columns):
-            df.drop_duplicates(subset=df.iloc[:, i], keep=False , inplace=True)
+        df.drop_duplicates()
         
-        return df
+      
    
     def convert_to_datetime(self, df:pd.DataFrame)->pd.DataFrame:
         """
