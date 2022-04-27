@@ -37,7 +37,8 @@ class Clean_Tweets:
         """
         #changing the column to date format using todatetime() func
         
-        df['created_at'] = pd.to_datetime(df['created_at'], errors='coerce')
+        df['created_at'] = pd.to_datetime(df['created_at'], format='%d%b%Y:%H:%M:%S.%f')
+        
         df = df[df['created_at'] >= '2020-12-31' ]
          
         
