@@ -37,7 +37,7 @@ class Clean_Tweets:
         """
         #changing the column to date format using todatetime() func
         
-        df['created_at'] = pd.to_datetime()
+        df['created_at'] = pd.to_datetime(df['created_at'], errors='coerce')
         df = df[df['created_at'] >= '2020-12-31' ]
          
         
@@ -65,3 +65,11 @@ class Clean_Tweets:
         self.df = df[df['lang']=='en']
         
         return df
+    
+    if __name__ == "__main__":
+    """
+    read the twitter dataset and Pass the data to the Clean_Tweets
+    class
+    """ 
+    tweet_df = pd.read_json("data/Economic_Twitter_Data.json", lines=True)
+    cleaner = Clean_Tweets(tweet_df)    
