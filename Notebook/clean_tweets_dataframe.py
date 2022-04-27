@@ -21,13 +21,23 @@ class Clean_Tweets:
         df = df[df['polarity'] != 'polarity']
         
         return df
+        
+    def fill_missingf(self, df: pd.DataFrame, column: str, value):
+        """
+        fill null values of a specific column with the provided value
+        """
+
+        df[column] = df[column].fillna(value)
+
+        return df    
+        
     def drop_duplicate(self, df:pd.DataFrame)->pd.DataFrame:
         """
         drop duplicate rows
         """
         #code to drop duplicates with the same entry on all columns
                
-        df.drop_duplicates()
+         df.drop_duplicates(inplace=True)
         
       
    
@@ -39,10 +49,11 @@ class Clean_Tweets:
         
         df['created_at'] = pd.to_datetime(df['created_at'], format='%d%b%Y:%H:%M:%S.%f')
         
-        df = df[df['created_at'] >= '2020-12-31' ]
+        
          
         
         return df
+        
     
     def convert_to_numbers(self, df:pd.DataFrame)->pd.DataFrame:
         """
@@ -51,10 +62,10 @@ class Clean_Tweets:
         """
         #changing the column to numbers format using tonumeric() func
         
-        df['polarity'] = pd.to_numeric()
-        df['subjectivity'] = pd.to_numeric()
-        df['retweet_count'] = pd.to_numeric()
-        df['favorite_count'] = pd.to_numeric()
+        df['polarity'] = pd.to_numeric(df['polarity'])
+        df['subjectivity'] = pd.to_numeric(df['subjectivity'])
+        df['retweet_count'] = pd.to_numeric(df['retweet_count'])
+        df['favorite_count'] = pd.to_numeric(df['favorite_count'])
         
         return df
     
@@ -63,14 +74,8 @@ class Clean_Tweets:
         remove non english tweets from lang
         """
         
-        self.df = df[df['lang']=='en']
+        df = df[df['lang']=='en']
         
         return df
     
-    if __name__ == "__main__":
-    """
-    read the twitter dataset and Pass the data to the Clean_Tweets
-    class
-    """ 
-    tweet_df = pd.read_json("data/Economic_Twitter_Data.json", lines=True)
-    cleaner = Clean_Tweets(tweet_df)    
+  
