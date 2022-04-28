@@ -11,16 +11,6 @@ class Clean_Tweets:
         self.df = df
         print('Automation in Action...!!!')
         
-        
-    def fill_missing(self, df: pd.DataFrame, column: str, value):
-        """
-        fill null values of a specific column with the provided value
-        """
-
-        df[column] = df[column].fillna(value)
-
-        return df      
-        
     def drop_unwanted_column(self, df:pd.DataFrame)->pd.DataFrame:
         """
         remove rows that has column names. This error originated from
@@ -37,9 +27,10 @@ class Clean_Tweets:
         """
         #code to drop duplicates with the same entry on all columns
                
-        df.drop_duplicates()
+        for i in len(df. columns):
+            df.drop_duplicates(subset=df.iloc[:, i], keep=False , inplace=True)
         
-      
+        return df
    
     def convert_to_datetime(self, df:pd.DataFrame)->pd.DataFrame:
         """
@@ -47,8 +38,8 @@ class Clean_Tweets:
         """
         #changing the column to date format using todatetime() func
         
-        df['created_at'] = pd.to_datetime(df['created_at'])
-        
+        df['created_at'] = pd.to_datetime()
+        df = df[df['created_at'] >= '2020-12-31' ]
          
         
         return df
@@ -60,10 +51,10 @@ class Clean_Tweets:
         """
         #changing the column to numbers format using tonumeric() func
         
-        df['polarity'] = pd.to_numeric(df['polarity'])
-        df['subjectivity'] = pd.to_numeric(df['subjectivity'])
-        df['retweet_count'] = pd.to_numeric(df['retweet_count'])
-        df['favorite_count'] = pd.to_numeric(df['favorite_count'])
+        df['polarity'] = pd.to_numeric()
+        df['subjectivity'] = pd.to_numeric()
+        df['retweet_count'] = pd.to_numeric()
+        df['favorite_count'] = pd.to_numeric()
         
         return df
     
@@ -72,8 +63,6 @@ class Clean_Tweets:
         remove non english tweets from lang
         """
         
-        df = df.drop(df[df['language'] != 'en'].index)
+        self.df = df[df['lang']=='en']
         
         return df
-        
-       
