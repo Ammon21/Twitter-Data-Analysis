@@ -1,5 +1,5 @@
 import pandas as pd
-
+import re
 
 #Debugged by Ammon on April 25th 2022
 
@@ -75,5 +75,12 @@ class Clean_Tweets:
         df = df.drop(df[df['language'] != 'en'].index)
         
         return df
+        
+    def extract_device_name(self, source: str):
+        """
+        returns device name from source text
+        """
+        res = re.split('<|>', source)[2].strip()
+        return res    
         
        
