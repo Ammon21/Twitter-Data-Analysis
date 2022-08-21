@@ -11,6 +11,10 @@
 
 </br>
 
+<!-- ![logo](https://logos-world.net/wp-content/uploads/2020/04/Twitter-Logo-2010-2012.png) -->
+<!-- ![phone with logo](https://insidebusiness.ng/wp-content/uploads/twitter-1.jpg) -->
+![tweeter_logo](images/twitter-featured.png)
+
 ## What Is Twitter Data?
 
 Twitter data is the information collected by either the user, the access point, what’s in the post and how users view or use your post. While this might sound somewhat vague, it’s largely due to the massive amount of data that can be collected from a single Tweet.
