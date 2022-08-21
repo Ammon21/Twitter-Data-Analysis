@@ -1,4 +1,3 @@
-# Twitter-Data-Analysis
 
 <h1 align="center">Twitter Data Analysis</h1>
 <div>
